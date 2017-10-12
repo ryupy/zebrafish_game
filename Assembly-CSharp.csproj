@@ -9,7 +9,7 @@
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <RootNamespace></RootNamespace>
-    <ProjectGuid>{DB47B12F-B76D-8332-482D-10AC6E29F527}</ProjectGuid>
+    <ProjectGuid>{B020118D-45BE-2063-5153-7F7B1698BE20}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <AssemblyName>Assembly-CSharp</AssemblyName>
@@ -51,7 +51,10 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\Scripts\CreateEbi.cs" />
      <Compile Include="Assets\Scripts\Fish.cs" />
+     <Compile Include="Assets\Scripts\Fish2.cs" />
+     <Compile Include="Assets\Scripts\TitleMgr.cs" />
      <Compile Include="Assets\Scripts\Token.cs" />
      <Compile Include="Assets\Scripts\Util.cs" />
  <Reference Include="UnityEngine.UI">
