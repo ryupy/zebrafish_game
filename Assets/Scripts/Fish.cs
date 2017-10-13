@@ -42,6 +42,4 @@ public class Fish : Token {
 		float spd = 5;
 		SetVelocity(dir, spd);
 	}
-
-	
 }

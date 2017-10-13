@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Fish2 : Token {
-
+	
 	// Use this for initialization
 	void Start () {
 
@@ -35,5 +35,15 @@ public class Fish2 : Token {
 			VY *= -1;
 			ClampScreen ();
 		}
+
+		// 魚を進行方向へ向かせる
+		Vector3 scale = transform.localScale;
+		if (VX >= 0) {
+			scale.x = -1;
+		} 
+		else {
+			scale.x = 1;
+		}
+		transform.localScale = scale;
 	}
 }

@@ -25,7 +25,16 @@ public class CreateEbi : MonoBehaviour {
 			clickPosition = Input.mousePosition;
 			clickPosition.z = 10f;
 
-			GameObject.Instantiate(Ebi, Camera.main.ScreenToWorldPoint(clickPosition), new Quaternion());
+			// こちらでもうまくいくが、名前からcloneを消去する処理が分からなかった
+//			GameObject.Instantiate(Ebi, Camera.main.ScreenToWorldPoint(clickPosition), new Quaternion());
+
+			// 一度、"ebi"というなまえにする
+			GameObject ebi = Instantiate(Ebi, Camera.main.ScreenToWorldPoint(clickPosition), new Quaternion()) as GameObject;
+
+			// 名前からcloneを消す。"ebi"から"Ebi"に変更
+			ebi.name = "Ebi";
+
+
 		}
 	}
 }
