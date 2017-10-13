@@ -7,7 +7,6 @@ public class Ebi : Token {
 	// Use this for initialization
 	void Start () {
 		SetSize (SpriteWidth / 2, SpriteHeight / 2);
-
 	}
 	
 	// Update is called once per frame

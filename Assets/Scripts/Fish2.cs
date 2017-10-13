@@ -50,9 +50,10 @@ public class Fish2 : Token {
 		if (VX == 0) {
 			// ランダムな方向に移動する
 			// 方向をランダムに決める
-			float dir = Random.Range(0, 359);
-			float spd = Random.Range(0, 10);
+			float dir = Random.Range (0, 359);
+			float spd = Random.Range (0, 10);
 			SetVelocity (dir, spd);
 		}
+
 	}
 }
