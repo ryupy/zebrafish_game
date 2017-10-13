@@ -15,11 +15,11 @@ public class Ebi : Token {
 		Vector2 min = GetWorldMin ();
 		Vector2 max = GetWorldMax ();
 		if (X < min.x || max.x < X) {
-			VX *= -1;
+			VX *= -0.1f;
 			ClampScreen ();
 		}
 		if (Y < min.y || max.y < Y) {
-			VY *= -1;
+			VY *= -0.1f;
 			ClampScreen ();
 		}
 	}
