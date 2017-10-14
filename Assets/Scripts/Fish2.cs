@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Fish2 : Token {
-	
+
+
 	// Use this for initialization
 	void Start () {
 		// サイズを設定
@@ -53,6 +54,18 @@ public class Fish2 : Token {
 			float dir = Random.Range (0, 359);
 			float spd = Random.Range (0, 10);
 			SetVelocity (dir, spd);
+		}
+
+
+		// エビと自分の距離を図る
+		Vector2 Ebipos = GameObject.Find("Ebi").transform.position;
+		Vector2 Fish2pos = this.transform.position;
+		float dis = Vector2.Distance (Ebipos, Fish2pos);
+		Debug.Log ("Distance : " + dis);
+
+		if (dis < 8f) {
+			Vector2 dir = Ebipos - Fish2pos;
+			RigidBody.AddForce (dir * 20f);
 		}
 
 	}

@@ -4,6 +4,7 @@ using System.Collections;
 /// 様々なユーティリティ.
 public class Util {
   /// Mathf.Cosの角度指定版.
+  /// float f をラジアンで指定しなくていいようにしている. 
 	public static float CosEx(float Deg) {
 		return Mathf.Cos(Mathf.Deg2Rad * Deg);
 	}

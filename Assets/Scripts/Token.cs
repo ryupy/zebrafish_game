@@ -161,6 +161,7 @@ public class Token : MonoBehaviour
     get { return _rigidbody2D ?? (_rigidbody2D = gameObject.GetComponent<Rigidbody2D> ()); }
   }
 
+
   /// 移動量を設定.
   public void SetVelocity (float direction, float speed)
   {
