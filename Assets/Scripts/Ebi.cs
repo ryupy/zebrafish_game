@@ -24,12 +24,15 @@ public class Ebi : Token {
 			VY *= -0.1f;
 			ClampScreen ();
 		} 
+			
 	}
 
 
 	// 魚と触れたとき
-	void OnTriggerEnter2D(Collider2D c){
-		// 消える
-		DestroyObj();
+	void OnTriggerEnter2D(Collider2D collision) {
+		if (collision.tag == "Player1"){
+			// 消える
+			DestroyObj();
+		}
 	}
 }

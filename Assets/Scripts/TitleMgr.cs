@@ -17,7 +17,12 @@ public class TitleMgr : MonoBehaviour {
 		float py = Screen.height / 2 - h / 2;
 
 		// フォント描画
-		Util.GUILabel(px, py, w, h, "Zebrafish Game");
+		Util.GUILabel(px, py, w, h, "Fish in the Labyrinth");
+
+		Util.SetFontSize (20);
+		py += 60;
+		Util.GUILabel (px, py, w, h, "Prodeced by RD, KN");
+
 
 		// ボタンは少し下にずらす
 		py += 60;

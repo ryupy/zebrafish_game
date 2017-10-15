@@ -54,6 +54,8 @@
      <Compile Include="Assets\Scripts\CreateEbi.cs" />
      <Compile Include="Assets\Scripts\Ebi.cs" />
      <Compile Include="Assets\Scripts\Fish2.cs" />
+     <Compile Include="Assets\Scripts\GameMgr.cs" />
+     <Compile Include="Assets\Scripts\goalcircle.cs" />
      <Compile Include="Assets\Scripts\Timer.cs" />
      <Compile Include="Assets\Scripts\TitleMgr.cs" />
      <Compile Include="Assets\Scripts\Token.cs" />

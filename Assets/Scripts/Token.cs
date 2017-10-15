@@ -6,6 +6,9 @@ using System.Collections;
 [RequireComponent (typeof(SpriteRenderer))]
 public class Token : MonoBehaviour
 {
+
+
+
   /// プレハブ取得.
   /// プレハブは必ず"Resources/Prefabs/"に配置すること.
   public static GameObject GetPrefab (GameObject prefab, string name)
@@ -27,6 +30,8 @@ public class Token : MonoBehaviour
     Vector3 pos = new Vector3 (x, y, 0);
     return CreateInstance<Type> (prefab, pos, direction, speed);
   }
+
+
 
   /// 生存フラグ.
   bool _exists = false;
@@ -404,7 +409,7 @@ public class Token : MonoBehaviour
     min.y += _height;
     return min;
   }
-
+		
   /// 画面右上のワールド座標を取得する.
   public Vector2 GetWorldMax (bool noMergin = false)
   {
@@ -419,7 +424,7 @@ public class Token : MonoBehaviour
     max.y -= _height;
     return max;
   }
-
+		
   /// 消滅（メモリから削除）.
   public void DestroyObj ()
   {

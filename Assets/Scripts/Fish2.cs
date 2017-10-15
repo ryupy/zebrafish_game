@@ -14,10 +14,13 @@ public class Fish2 : Token {
 
 	// Update is called once per frame
 	void Update () {
+
+		// これだと、解像度があってないときに外にでてしまう
 		// カメラの左下座標を取得
 		Vector2 min = GetWorldMin ();
 		// カメラの右上座標を取得
 		Vector2 max = GetWorldMax ();
+
 		if (X < min.x || max.x < X) {
 			// 画面外に出たので、X移動量を反転する
 			VX *= -1;
@@ -34,9 +37,9 @@ public class Fish2 : Token {
 		// Vector3でscaleを取得し、VX(移動量)の向きで場合分け
 		Vector3 scale = transform.localScale;
 		if (VX > 0) {
-			scale.x = -1;
+			scale.x = -0.4f;
 		} else if (VX < 0) {
-			scale.x = 1;
+			scale.x = 0.4f;
 		} else {
 		}
 		// scaleを代入する
@@ -52,7 +55,7 @@ public class Fish2 : Token {
 			// ランダムな方向に移動する
 			// 方向をランダムに決める
 			float dir = Random.Range (0, 359);
-			float spd = Random.Range (0, 10);
+			float spd = Random.Range (0, 8);
 			SetVelocity (dir, spd);
 		}
 
@@ -63,9 +66,9 @@ public class Fish2 : Token {
 		float dis = Vector2.Distance (Ebipos, Fish2pos);
 		Debug.Log ("Distance : " + dis);
 
-		if (dis < 8f) {
+		if (dis < 5f) {
 			Vector2 dir = Ebipos - Fish2pos;
-			RigidBody.AddForce (dir * 20f);
+			RigidBody.AddForce (dir * 15f);
 		}
 
 	}
