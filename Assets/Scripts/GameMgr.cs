@@ -2,13 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GameMgr : Timer {
+public class GameMgr : MonoBehaviour {
 
 	public GameObject Fish2;
 	public GameObject Ebi;
+
 	void OnGUI () {
 		if (goalcircle.goal == 0) {
-			if (countTime == 0) {
+			if (Timer.countTime == 0) {
 				Fish2 = GameObject.Find ("Fish2");
 				Destroy (Fish2);
 				Ebi = GameObject.Find ("Ebi");
@@ -63,9 +64,9 @@ public class GameMgr : Timer {
 
 			// ボタンは少し下にずらす
 			py += 60;
-			if (GUI.Button (new Rect (px, py, w, h), "Back to Title")) {
+			if (GUI.Button (new Rect (px, py, w, h), "Next")) {
 				// タイトルに戻る
-				Application.LoadLevel ("Title");
+				Application.LoadLevel ("Main3");
 			}
 		}
 	}

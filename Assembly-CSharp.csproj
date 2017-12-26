@@ -51,15 +51,19 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\Scripts\Actor.cs" />
      <Compile Include="Assets\Scripts\CreateEbi.cs" />
      <Compile Include="Assets\Scripts\Ebi.cs" />
      <Compile Include="Assets\Scripts\Fish2.cs" />
      <Compile Include="Assets\Scripts\GameMgr.cs" />
+     <Compile Include="Assets\Scripts\GameMgr2.cs" />
+     <Compile Include="Assets\Scripts\GameMgr3.cs" />
      <Compile Include="Assets\Scripts\goalcircle.cs" />
      <Compile Include="Assets\Scripts\Timer.cs" />
      <Compile Include="Assets\Scripts\TitleMgr.cs" />
      <Compile Include="Assets\Scripts\Token.cs" />
      <Compile Include="Assets\Scripts\Util.cs" />
+     <None Include="Assets\hitori_yubin_soundpack\yubin_readme.txt" />
  <Reference Include="UnityEngine.UI">
  <HintPath>/Applications/Unity/Unity.app/Contents/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class CreateEbi : Timer{
+public class CreateEbi : MonoBehaviour{
 
 	// エビの数の入れ物
 	public int ebinumber;
@@ -14,9 +14,6 @@ public class CreateEbi : Timer{
 	// 生成したいPrefab。アタッチをする時は入れる
 	public GameObject Ebi;
 
-	// クリックした座標
-	private Vector3 clickPosition;
-
 	// Use this for initialization
 	void Start () {
 		// 最初のエビの数
@@ -25,19 +22,18 @@ public class CreateEbi : Timer{
 
 	// Update is called once per frame
 	void Update () {
-		countTime -= Time.deltaTime;
-		if (countTime > 0) {
+		if (Timer.countTime > 0) {
 			if (goalcircle.goal == 0) {
 				// 左クリックをした瞬間,0は左クリック
 				if (Input.GetMouseButtonDown (0)) {
 					if (ebinumber == 0) {
 						return;
 					} else {
-						clickPosition = Input.mousePosition;
-						clickPosition.z = 10f;
+						Camera camera = Camera.main;
+						Vector2 clickPosition = camera.ScreenToWorldPoint(Input.mousePosition);
 
 						// 一度、"ebi"というなまえにして、"Ebi"に戻すことでcloneを消している
-						GameObject ebi = Instantiate (Ebi, Camera.main.ScreenToWorldPoint (clickPosition), new Quaternion ()) as GameObject;
+						GameObject ebi = Instantiate (Ebi, clickPosition, Quaternion.identity); //as GameObject;
 						ebi.name = "Ebi";
 
 						// エビの数を減らす

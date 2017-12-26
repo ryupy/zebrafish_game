@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class goalcircle : Token {
 
-	public static int goal = 0;
+	public static int goal;
 
 	void Start () {
 		goal = 0;

@@ -1,75 +1,76 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
-public class Fish2 : Token {
+[RequireComponent(typeof(Rigidbody2D), typeof(SpriteRenderer))]
+public class Fish2 : Actor {
 
+	private Rigidbody2D m_Rigidbody;
+	private SpriteRenderer m_Render;
 
-	// Use this for initialization
-	void Start () {
-		// サイズを設定
-		SetSize (SpriteWidth / 2, SpriteHeight / 2);
+	private void Awake(){
+		this.m_Rigidbody = GetComponent<Rigidbody2D> ();
+		this.m_Render = GetComponent<SpriteRenderer> ();
+	}
+
+	private void FixedUpdate(){
+		EnsureInScreen (m_Rigidbody, m_Render.bounds.size);
+		MoveToEbi ();
+		UpdateVelocity ();
 	}
 
 
 	// Update is called once per frame
 	void Update () {
-
-		// これだと、解像度があってないときに外にでてしまう
-		// カメラの左下座標を取得
-		Vector2 min = GetWorldMin ();
-		// カメラの右上座標を取得
-		Vector2 max = GetWorldMax ();
-
-		if (X < min.x || max.x < X) {
-			// 画面外に出たので、X移動量を反転する
-			VX *= -1;
-			// 画面内に移動する
-			ClampScreen ();
-		}
-		if (Y < min.y || max.y < Y) {
-			VY *= -1;
-			ClampScreen ();
+		UpdateImageDirection ();
 		}
 
+	private void MoveToEbi(){
+		
+		Ebi[] ebilist = FindObjectsOfType<Ebi>(); 
+		Ebi nearest = null;
+		float minDistance = System.Single.PositiveInfinity;
+		foreach (Ebi ebi in ebilist) {
+			
+			Vector2 ebiPos = ebi.transform.position;
+			Vector2 fish2Pos = this.transform.position;
+			float distance = Vector2.Distance (ebiPos, fish2Pos);
+			Debug.Log ("Distance : " + distance);
 
-		// 魚を進行方向へ向かせる
-		// Vector3でscaleを取得し、VX(移動量)の向きで場合分け
-		Vector3 scale = transform.localScale;
-		if (VX > 0) {
-			scale.x = -0.4f;
-		} else if (VX < 0) {
-			scale.x = 0.4f;
-		} else {
-		}
-		// scaleを代入する
-		transform.localScale = scale;
-
-		// 魚を減速させる
-		VX *= 0.9f;
-		VY *= 0.9f;
-
-
-		// 止まった場合、魚を動かす
-		if (VX == 0) {
-			// ランダムな方向に移動する
-			// 方向をランダムに決める
-			float dir = Random.Range (0, 359);
-			float spd = Random.Range (0, 8);
-			SetVelocity (dir, spd);
+			if (distance < minDistance) {
+				nearest = ebi;
+				minDistance = distance;
+			}
 		}
 
+		if (minDistance < 8.0f) {
+			Vector2 ebiPos = nearest.transform.position;
+			Vector2 fish2Pos = this.transform.position;
+			Vector2 direction = (ebiPos - fish2Pos).normalized;
 
-		// エビと自分の距離を図る
-		Vector2 Ebipos = GameObject.Find("Ebi").transform.position;
-		Vector2 Fish2pos = this.transform.position;
-		float dis = Vector2.Distance (Ebipos, Fish2pos);
-		Debug.Log ("Distance : " + dis);
-
-		if (dis < 5f) {
-			Vector2 dir = Ebipos - Fish2pos;
-			RigidBody.AddForce (dir * 15f);
+			m_Rigidbody.AddForce (direction * 20.0f);
 		}
-
 	}
+
+	void UpdateVelocity(){
+		m_Rigidbody.velocity *= 0.9f;
+
+		if (Mathf.Approximately (m_Rigidbody.velocity.x, 0.0f)) {
+			float angle = Mathf.PI * 2.0f * Random.value;
+			Vector2 direction = new Vector2 (Mathf.Cos (angle), Mathf.Sin (angle));
+			float speed = 10.0f * Random.value;
+
+			m_Rigidbody.velocity = direction * speed;
+		}
+	}
+
+	void UpdateImageDirection(){
+		float vx = m_Rigidbody.velocity.x;
+		if (!Mathf.Approximately (vx, 0.0f)) {
+			if (vx < 0.0f) {
+				m_Render.flipX = true;
+			} else {
+				m_Render.flipX = false;
+			}
+		}
+	}
+
 }

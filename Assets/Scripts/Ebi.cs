@@ -1,38 +1,26 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
-public class Ebi : Token {
+//Rigidbody2DとSpriteRenderのアタッチが必要
+[RequireComponent(typeof(Rigidbody2D), typeof(SpriteRenderer))]
+public class Ebi : Actor {
 
+	private Rigidbody2D m_Rigidbody;
+	private SpriteRenderer m_Render;
 
-	// Use this for initialization
-	void Start () {
-		SetSize (SpriteWidth / 2, SpriteHeight / 2);
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-		// 画面内にいるようにする
-		Vector2 min = GetWorldMin ();
-		Vector2 max = GetWorldMax ();
-		if (X < min.x || max.x < X) {
-			VX *= -0.1f;
-			ClampScreen ();
-		}
-		if (Y < min.y || max.y < Y) {
-			VY *= -0.1f;
-			ClampScreen ();
-		} 
-			
+	private void Awake(){
+		this.m_Rigidbody = GetComponent<Rigidbody2D> ();
+		this.m_Render = GetComponent<SpriteRenderer> ();
 	}
 
+	private void FixedUpdate(){
+		EnsureInScreen (m_Rigidbody, m_Render.bounds.size);
+	}
 
 	// 魚と触れたとき
-	void OnTriggerEnter2D(Collider2D collision) {
-		if (collision.tag == "Player1"){
+	void OnTriggerEnter2D(Collider2D c) {
+		if (c.tag == "Player1"){
 			// 消える
-			DestroyObj();
+			Destroy(gameObject);
 		}
 	}
 }
