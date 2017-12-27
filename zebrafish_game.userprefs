@@ -1,16 +1,18 @@
 ﻿<Properties StartupItem="Assembly-CSharp.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/Token.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/TitleMgr.cs">
     <Files>
-      <File FileName="Assets/Scripts/Ebi.cs" Line="32" Column="45" />
-      <File FileName="Assets/Scripts/GameMgr3.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/Fish2.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/Timer.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/CreateEbi.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/GameMgr.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/Actor.cs" Line="37" Column="3" />
+      <File FileName="Assets/Scripts/Ebi.cs" Line="17" Column="3" />
+      <File FileName="Assets/Scripts/Fish2.cs" Line="49" Column="42" />
+      <File FileName="Assets/Scripts/Timer.cs" Line="11" Column="18" />
+      <File FileName="Assets/Scripts/CreateEbi.cs" Line="18" Column="17" />
+      <File FileName="Assets/Scripts/GameMgr.cs" Line="12" Column="14" />
+      <File FileName="Assets/Scripts/GameMgr2.cs" Line="11" Column="14" />
+      <File FileName="Assets/Scripts/GameMgr3.cs" Line="15" Column="9" />
       <File FileName="Assets/Scripts/goalcircle.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/GameMgr2.cs" Line="1" Column="1" />
       <File FileName="Assets/Scripts/Token.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/TitleMgr.cs" Line="1" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
